@@ -52,12 +52,12 @@ INSTALLED_APPS = [
 
     #local
     'apps.users.apps.UsersConfig', 
-    #'apps.dashboard.apps.DashboardConfig',
-    #'apps.courses',
-    #'apps.games',
-    #'apps.tournaments',
-    #'apps.party',
-    'apps.friendships',
+    'apps.dashboard.apps.DashboardConfig',
+    'apps.courses',
+    'apps.games',
+    'apps.tournaments',
+    'apps.party',
+    'apps.friendship',
 
      #thirdparty
     'crispy_forms',
