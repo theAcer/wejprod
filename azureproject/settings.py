@@ -36,7 +36,7 @@ if 'CODESPACE_NAME' in os.environ:
 
 INSTALLED_APPS = [
     'rest_framework',
-    #'apps.firebase_auth',
+    'apps.firebase_auth',
     'restaurant_review.apps.RestaurantReviewConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'django_extensions',
     'silk',
     'rest_framework_swagger',
+
     #local
     'apps.users.apps.UsersConfig', 
     #'apps.dashboard.apps.DashboardConfig',
@@ -57,6 +58,17 @@ INSTALLED_APPS = [
     #'apps.tournaments',
     #'apps.party',
     'apps.friendships',
+
+     #thirdparty
+    'crispy_forms',
+    'crispy_bootstrap5',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
+    'bootstrap_datepicker_plus',
+    'debug_toolbar',
+    'drf_yasg',
 ]
 
 SOCIALACCOUNT_PROVIDERS = {
@@ -239,3 +251,14 @@ sys.path.append(os.path.join(BASE_DIR, 'apps'))
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+FIREBASE_CONFIG = {
+  "apiKey": "AIzaSyBlIjlgcWQxRoSbt0GJpe-hBfEJKdAaptw",
+  "authDomain": "wejja-78a11.firebaseapp.com",
+  "databaseURL": "https://wejja-78a11-default-rtdb.firebaseio.com",
+  "projectId": "wejja-78a11",
+  "storageBucket": "wejja-78a11.appspot.com",
+  "messagingSenderId": "762433816574",
+  "appId": "1:762433816574:web:6b06c7a890ff68ffff22af",
+  "measurementId": "G-B3FWHHBFDN"
+}
