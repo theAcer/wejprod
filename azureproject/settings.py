@@ -57,7 +57,8 @@ INSTALLED_APPS = [
     'apps.games',
     'apps.tournaments',
     'apps.party',
-    'apps.friendships',
+    'apps.friendship',
+    'apps.wagers',
 
      #thirdparty
     'crispy_forms',
