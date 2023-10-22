@@ -7,6 +7,7 @@ class Restaurant(models.Model):
     name = models.CharField(max_length=50)
     street_address = models.CharField(max_length=50)
     description = models.CharField(max_length=250)
+    chef = models.CharField(max_length=100, null=True)
 
     def __str__(self):
         return self.name
