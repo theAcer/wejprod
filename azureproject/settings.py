@@ -27,7 +27,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
 if 'CODESPACE_NAME' in os.environ:
     CSRF_TRUSTED_ORIGINS = [f'https://{os.getenv("CODESPACE_NAME")}-8000.{os.getenv("GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN")}']
@@ -143,6 +143,10 @@ REST_FRAMEWORK = {
 
 }
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
+CORS_ALLOW_CREDENTIALS = True  # You may need this depending on your setup
+CORS_ORIGIN_WHITELIST = (
+    'https://localhost:8000',
+)
 CORS_ORIGIN_ALLOW_ALL = True 
 
 ROOT_URLCONF = 'azureproject.urls'

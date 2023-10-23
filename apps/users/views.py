@@ -6,11 +6,11 @@ from django.views import generic
 from .forms import CustomUserCreationForm
 from .models import Player
 from django.views.generic import DetailView, UpdateView
+from django.views.decorators.csrf import csrf_exempt
 
 
  # Import your FirebaseAuthentication class
 from firebase_admin import auth  # Import Firebase's auth module
-
 
 class SignupPageView(generic.CreateView):
     form_class = CustomUserCreationForm
