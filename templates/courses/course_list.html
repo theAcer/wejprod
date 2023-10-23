@@ -1,0 +1,15 @@
+<!-- courses/course_list.html -->
+{% extends '_base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+  <h2>Course List</h2>
+  {% if courses %}
+    <ul>
+      {% for course in courses %}
+        <li><a href="{% url 'courses:course_detail' course.pk %}">{{ course.name }}</a></li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No courses available.</p>
+  {% endif %}
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends '_base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+  <h1>Player Profile</h1>
+
+  {% if player %}
+    <h2>{{ player.name }}</h2>
+    <p>Handicap: {{ player.handicap }}</p>
+    {% if player.profile_picture %}
+      <img src="{{ player.profile_picture.url }}" alt="{{ player.name }} Profile Picture">
+    {% else %}
+      <p>No profile picture available</p>
+    {% endif %}
+    <a href="{% url 'users:player_profile_update' player.pk %}" class="btn btn-primary">Edit Profile</a>
+    <a href="{% url 'tournaments:tournament_create' %}"class="btn btn-primary">Create tournament</a>
+    <div class="invitations-container">
+      <h3>Invitations</h3>
+      {% if invitations %}
+        <ul>
+          {% for invitation in invitations %}
+            <li>
+              <p>Tournament: {{ invitation.tournament }}</p>
+              <p>Invited By: {{ invitation.tournament.creator }}</p>
+              <p>Invitation Status: {% if invitation.accepted %}Accepted{% elif invitation.declined %}Declined{% else %}Pending{% endif %}</p>
+              {% if not invitation.accepted and not invitation.declined %}
+                <form method="post" action="{% url 'tournaments:accept_invitation' pk=invitation.pk %}">
+                  {% csrf_token %}
+                  <button type="submit">Accept</button>
+                </form>
+                <form method="post" action="{% url 'tournaments:decline_invitation' pk=invitation.pk %}">
+                  {% csrf_token %}
+                  <button type="submit">Decline</button>
+                </form>
+              {% endif %}
+            </li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        <p>No invitations.</p>
+      {% endif %}
+    </div>
+  {% else %}
+    <p>No player profile found.</p>
+    
+  {% endif %}
+{% endblock %}

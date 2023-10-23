@@ -1,0 +1,16 @@
+<!-- templates/account/login.html -->
+{% extends '_base.html' %}
+{% load socialaccount %}
+{% load crispy_forms_tags %}
+
+{% block title %}Log in{% endblock title %}
+{% block content %}
+<h2>Log in</h2>
+<form method="post">
+{% csrf_token %}
+{{ form|crispy }}
+<button class="btn btn-success" type="submit">Log in</button>
+</form>
+<p>Or</p>
+  <a href="{% provider_login_url 'google' %}">Log in with Google</a>
+{% endblock content %}

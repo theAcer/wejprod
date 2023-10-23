@@ -1,0 +1,15 @@
+<!-- tournament_confirm_exit.html -->
+
+{% extends '_base.html' %}
+
+{% block content %}
+  <div class="container mt-4">
+    <h2>Confirm Exit from Tournament</h2>
+    <p>Are you sure you want to exit from "{{ tournament.name }}" tournament?</p>
+    <form method="post">
+      {% csrf_token %}
+      <button type="submit" class="btn btn-danger">Exit</button>
+      <a href="{% url 'tournaments:tournament_detail' tournament.pk %}" class="btn btn-secondary">Cancel</a>
+    </form>
+  </div>
+{% endblock %}

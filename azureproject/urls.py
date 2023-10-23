@@ -29,5 +29,23 @@ urlpatterns = [
     
     # Local apps
     path('accounts/', include('users.urls')),
+    path('party/', include('party.urls', namespace='party')),
+    path('courses/', include('courses.urls', namespace='courses')),
+    path('games/', include('games.urls', namespace='games')),
+    path('tournaments/', include('tournaments.urls', namespace='tournaments')),
+    path('', include('dashboard.urls')),
+    path('api/', include('rest_framework.urls')),
     path('friends/', include('friendship.urls', namespace='friends')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+urlpatterns += [path('silk/', include('silk.urls', namespace='silk'))]
+admin.site.site_header = "Wejja Golf admin"
+admin.site.site_title = "Wejja Golf admin site"
+admin.site.index_title = "Wejja Golf Admin"
+
+if settings.DEBUG:
+    import debug_toolbar
+    
+    urlpatterns = [
+        path("__debug__/", include(debug_toolbar.urls)),
+    ] + urlpatterns

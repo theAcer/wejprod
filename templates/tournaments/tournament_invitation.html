@@ -1,0 +1,23 @@
+{% extends '_base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+  <div class="container mt-4">
+    <h2>Invite Players to {{ tournament.name }}</h2>
+    <form method="post" class="form">
+      {% csrf_token %}
+
+
+      <!-- Add custom styling for the "invited_players" field -->
+      <div class="form-group">
+        <label for="{{ form.invited_players.id_for_label }}">Select Players to Invite:</label>
+        <select name="{{ form.invited_players.name }}" id="{{ form.invited_players.id_for_label }}" class="form-control" multiple>
+          {% for player in form.invited_players.field.queryset %}
+            <option value="{{ player.pk }}">{{ player }}</option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Send Invitations</button>
+    </form>
+  </div>
+{% endblock %}

@@ -1,0 +1,10 @@
+<!-- tournament_join.html -->
+
+{% extends '_base.html' %}
+{% block content %}
+  <h2>Join Tournament</h2>
+  <form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-primary">Join</button>
+  </form>
+{% endblock %}

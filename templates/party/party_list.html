@@ -1,0 +1,31 @@
+<!-- templates/party/party_list.html -->
+{% extends '_base.html' %}
+
+{% block title %}Parties List{% endblock %}
+
+{% block content %}
+  <h2>Parties List</h2>
+  <div class="row">
+    <div class="col-md-6">
+      <h3>Join a Party</h3>
+      <ul>
+        {% for party in parties %}
+          <li>
+            {{ party.name }}
+            {% if user_is_participant %}
+              {% if user_in_party %}
+                <span class="text-success">Joined</span>
+              {% else %}
+                <a href="{% url 'tournaments:party/join_party' party.pk %}" class="btn btn-primary">Join</a>
+              {% endif %}
+            {% endif %}
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="col-md-6">
+      <h3>Create a New Party</h3>
+      <a href="{% url 'tournaments:party_create' %}" class="btn btn-success">Create Party</a>
+    </div>
+  </div>
+{% endblock %}

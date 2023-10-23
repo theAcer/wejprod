@@ -1,0 +1,42 @@
+{% extends '_base.html' %}
+
+{% block content %}
+  <h1>Game Details</h1>
+  <h2>{{ game }}</h2>
+  <p>Date: {{ game.date }}</p>
+  <p>Course: {{ game.tournament.course }}</p>
+  <p>Tournament: {{ game.tournament }}</p>
+  <!-- Add any other relevant game details here -->
+  <h1>Player Scores</h1>
+
+  <table class="table table-bordered">
+
+      <thead>
+        <tr>
+          <th>Player</th>
+          {% for hole_number in hole_numbers %}
+            <th>Hole {{ hole_number }}</th>
+          {% endfor %}
+        </tr>
+      </thead>
+      <tbody>
+        {% for player, scores in scores_data.items %}
+          <tr>
+            <td>{{ player }}</td>
+            {% for score in scores %}
+              <td>
+                {% if score %}
+                  {{ score }}
+                {% else %}
+                  None
+                {% endif %}
+              </td>
+            {% endfor %}
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  
+    <a class="btn btn-primary" href="{% url 'games:game_scores' game.pk  %}">Upload Scores</a>
+  <a href="{% url 'party:party_detail' pk=game.party.pk %}">Back to Party</a>
+{% endblock %}

@@ -1,0 +1,13 @@
+<!-- party_close.html -->
+
+{% extends '_base.html' %}
+
+{% block content %}
+  <h2>Close Party</h2>
+  <p>Are you sure you want to close this party?</p>
+  <form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Close Party</button>
+    
+  </form>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends '_base.html' %}
+
+{% block content %}
+  <h2>Invitation List</h2>
+  {% if invitations %}
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Tournament</th>
+          <th>Invited By</th>
+          <th>Invitation Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for invitation in invitations %}
+          <tr>
+            <td>{{ invitation.tournament }}</td>
+            <td>{{ invitation.tournament.creator }}</td>
+            <td>{{ invitation.status }}</td>
+            <td>
+              {% if invitation.status == 'pending' %}
+              <a href="{% url 'tournaments:accept_invitation' invitation_id=invitation.id %}" class="btn btn-primary">Accept</a>
+
+              <a href="{% url 'tournaments:decline_invitation' invitation_id=invitation.id %}" class="btn btn-danger">Decline</a>
+              {% else %}
+                Invitation already {{ invitation.status }}
+              {% endif %}
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p>No pending invitations.</p>
+  {% endif %}
+{% endblock %}

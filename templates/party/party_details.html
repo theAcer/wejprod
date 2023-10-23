@@ -1,0 +1,50 @@
+{% extends '_base.html' %}
+
+{% block content %}
+  <h1>Party Details</h1>
+  <h2>{{ party.name }}</h2>
+  <p>Party Status: {{ party.is_closed }}</p>
+
+
+  <h3>Players:</h3>
+  <ul>
+    {% for player in party.players.all %}
+      <li>{{ player.name }}</li>
+    {% endfor %}
+  </ul>
+
+  {% if user_is_party_participant %}
+    <p>You are a participant in this party.</p>
+    <form method="post" action="{% url 'party:leave_party' party.pk %}">
+      {% csrf_token %}
+      <button type="submit" class="btn btn-danger">Leave Party</button>
+    </form>
+    
+    
+    <form method="post" action="{% url 'party:close_party' party.pk %}">
+      {% csrf_token %}
+      <button type="submit" class="btn btn-primary">Close Party</button>
+    </form>
+    
+
+  {% else %}
+    <p>You are not a participant in this party.</p>
+    <form method="post" action="{% url 'party:join_party' party.pk %}">
+      {% csrf_token %}
+      <button type="submit" class="btn btn-primary">Join Party</button>
+    </form>
+  {% endif %}
+  
+  <!-- Add any additional information about the party here -->
+  <h3>Game Scores:</h3>
+  {% if party.games.exists %}
+    {% with game=party.games.first %}
+      <!-- Link to view scores for the game of the party -->
+      <a href="{% url 'games:game_detail' pk=game.pk %}" class="btn btn-primary">View Scores for {{ game }}</a>
+    {% endwith %}
+  {% else %}
+    <p>No game found for this party.</p>
+  {% endif %}
+{% endblock %}
+
+

@@ -1,0 +1,11 @@
+<!-- courses/course_detail.html -->
+{% extends '_base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+  <h2>{{ course.name }}</h2>
+  <p>Location: {{ course.location }}</p>
+  <p>Par: {{ course.par }}</p>
+  <!-- Add more fields as needed -->
+  <a href="{% url 'courses:course_update' course.pk %}">Edit</a>
+  <a href="{% url 'courses:course_delete' course.pk %}">Delete</a>
+{% endblock %}

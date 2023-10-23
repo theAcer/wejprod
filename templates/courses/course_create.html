@@ -1,0 +1,11 @@
+<!-- courses/course_create.html -->
+{% extends '_base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+  <h2>Create Course</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button class="btn btn-success" type="submit">Create</button>
+  </form>
+{% endblock %}

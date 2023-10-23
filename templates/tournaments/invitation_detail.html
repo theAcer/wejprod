@@ -1,0 +1,9 @@
+{% extends '_base.html' %}
+
+{% block content %}
+  <h2>Invitation Detail</h2>
+  <p>Tournament: {{ invitation.tournament }}</p>
+  <p>Invited By: {{ invitation.tournament.creator }}</p>
+  <p>Invitation Status: {{ invitation.status }}</p>
+  <!-- Add additional information or buttons as needed -->
+{% endblock %}

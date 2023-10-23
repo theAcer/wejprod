@@ -1,0 +1,35 @@
+<!-- tournament_list.html -->
+
+{% extends '_base.html' %}
+
+{% block content %}
+  <h2>Tournaments</h2>
+  <table>
+    {% for tournament in tournaments %}
+      <tr>
+        <td><h4><a href="{% url 'tournaments:tournament_detail' pk=tournament.pk %}">{{ tournament.name }}</a></h4></td>
+        <td><p>Start Date: {{ tournament.start_date }}</p></td>
+        <td><p>End Date: {{ tournament.end_date }}</p></td>
+        <td><p>Creator: {{ tournament.creator }}</p></td>
+        {% if user_is_participant and user.player in tournament.participants.all %}
+          <!-- Show the "Leave Tournament" button -->
+          <td>
+            <form method="post" action="{% url 'tournaments:leave_tournament' pk=tournament.pk %}">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-danger">Leave</button>
+            </form>
+          </td>
+        {% elif not user_is_participant %}
+          <!-- Show the "Join Tournament" button -->
+          <td>
+            <form method="post" action="{% url 'tournaments:join_tournament' pk=tournament.pk %}">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-success">Join</button>
+            </form>
+          </td>
+        {% endif %}
+      </tr>
+    {% endfor %}
+  </table>
+  <a href="{% url 'tournaments:tournament_create' %}" class="btn btn-primary">Create tournament</a>
+{% endblock %}

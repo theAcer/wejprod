@@ -1,0 +1,42 @@
+<!-- games/game_scores.html -->
+{% extends "_base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<h1>Update Scores for Game on {{ game.start_time }}</h1>
+{{ scores_data }}
+<body>
+  <h1>Update Scores for Game on {{ game.start_time }}</h1>
+
+  <form method="post">
+    {% csrf_token %}
+    <table>
+        <tr>
+            <th>Player</th>
+            {% for hole in holes %}
+                <th>Hole {{ hole.hole_number }}</th>
+            {% endfor %}
+        </tr>
+        {% for player in players %}
+            <tr>
+                <td>{{ player.name }}</td>
+                {% for hole in holes %}
+                    <td>
+                        {% with field_name="score_"|add:player.id|add:"_"|add:hole.hole_number %}
+                            <input
+                                type="number"
+                                name="{{ field_name }}"
+                                
+                            >
+                        {% endwith %}
+                    </td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+    </table>
+    <input type="submit" value="Update Scores">
+</form>
+
+</body>
+
+{% endblock %}
