@@ -21,7 +21,7 @@ from rest_framework import routers, serializers, viewsets
 from rest_framework.permissions import AllowAny
 
 urlpatterns = [
-    path('', include('restaurant_review.urls')),
+    #path('', include('restaurant_review.urls')),
     path('admin/', admin.site.urls),
     # User management
     path('accounts/', include('allauth.urls')),
