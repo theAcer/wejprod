@@ -268,6 +268,17 @@ sys.path.append(os.path.join(BASE_DIR, 'apps'))
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+SWAGGER_SETTINGS = {
+    'SECURITY_DEFINITIONS': {
+        'Token': {
+            'type': 'apiKey',
+            'name': 'Authorization',
+            'in': 'header',
+        },
+    },
+}
+
+
 FIREBASE_CONFIG = {
   "apiKey": "AIzaSyBlIjlgcWQxRoSbt0GJpe-hBfEJKdAaptw",
   "authDomain": "wejja-78a11.firebaseapp.com",
