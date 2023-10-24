@@ -121,6 +121,7 @@ AUTHENTICATION_BACKENDS = (
 )
 
 AUTH_USER_MODEL = 'users.CustomUser'
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 DEFAULT_FROM_EMAIL = 'samsonnjogu@gmail.com'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
