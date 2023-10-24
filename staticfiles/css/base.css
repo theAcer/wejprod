@@ -1,0 +1,37 @@
+/* static/css/base.css */
+h1 {
+    color: red;
+    }
+/* Define the styles for the score-table class */
+.score-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .score-table th,
+  .score-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+  }
+
+  .score-table th {
+    background-color: #f2f2f2;
+  }
+
+  .score-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+
+  .score-table tr:nth-child(odd) {
+    background-color: #ffffff;
+  }
+
+  /* Add interwoven shading to the holes section */
+  .score-table tbody td:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+
+  .score-table tbody td:nth-child(odd) {
+    background-color: #ffffff;
+  }

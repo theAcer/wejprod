@@ -30,7 +30,17 @@ DEBUG = True
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
 if 'CODESPACE_NAME' in os.environ:
-    CSRF_TRUSTED_ORIGINS = [f'https://{os.getenv("CODESPACE_NAME")}-8000.{os.getenv("GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN")}']
+    CODESPACE_NAME = os.getenv('CODESPACE_NAME')
+    GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN = os.getenv('GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN')
+    
+    # Create the trusted origin for the CodeSpace
+    codespace_origin = f'https://{CODESPACE_NAME}-8000.{GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN}'
+    
+    # Add localhost to the trusted origins
+    CSRF_TRUSTED_ORIGINS = [codespace_origin, 'https://localhost:8000']
+else:
+    # Set trusted origins to only include localhost if CODESPACE_NAME is not in the environment
+    CSRF_TRUSTED_ORIGINS = ['https://localhost:8000/', 'https://127.0.0.1:8000/']
 
 # Application definition
 
@@ -232,6 +242,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATICFILES_DIRS = (str(BASE_DIR.joinpath('static')),)
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = 'static/'
 STATICFILES_FINDERS = [
     "django.contrib.staticfiles.finders.FileSystemFinder",
