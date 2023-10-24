@@ -22,9 +22,9 @@ class UserRegistrationView(generics.CreateAPIView):
         user = serializer.save()
 
         # If you want to customize additional actions or authentication, you can do it here
-
+        backend = 'django.contrib.auth.backends.ModelBackend'
         # Log the user in using Django's login function
-        login(self.request, user)
+        login(self.request, user, backend=backend)
 
 class UserDetailViewSet(RetrieveAPIView):
     serializer_class = UserSerializer
