@@ -6,6 +6,8 @@ from django.views.generic import ListView, DetailView, \
 from .models import Event, Participant, Wager, WagerInvitation
 from django.contrib import messages
 from .forms import WagerForm, EventForm
+from django.urls import reverse_lazy
+
 
 try:
     from django.contrib.auth import get_user_model
