@@ -5,12 +5,12 @@ from .models import Event, Participant
 class EventForm(forms.ModelForm):
     class Meta:
         model = Event
-        fields = ['title', 'description', 'start_date', 'end_date']
+        fields = ['title', 'description']
 
 class ParticipantForm(forms.ModelForm):
     class Meta:
         model = Participant
-        fields = ['name', 'category']
+        fields = ['user', 'contributed_amount']
 
 class WagerForm(forms.Form):
     amount = forms.DecimalField(max_digits=10, decimal_places=2)

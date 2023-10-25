@@ -168,3 +168,32 @@ class WagerRequest(models.Model):
     def __str__(self):
         return self.title
 
+
+class WagerInvitation(models.Model):
+    sender = models.ForeignKey(
+        AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name='wager_invitations_sent'
+        )
+        
+    recipient = models.ForeignKey(
+        AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name='wager_invitations_received'
+        )
+
+    event = models.ForeignKey(Event, on_delete=models.CASCADE)  # Link to the specific Event
+    created = models.DateTimeField(auto_now_add=True)
+    
+    # You can add additional fields to the model, such as a message for the invitation.
+    message = models.TextField(blank=True, null=True)
+    
+    # Add a field to represent the status of the invitation, e.g., "accepted," "rejected," or "pending."
+    status = models.CharField(max_length=10, default='pending')
+    
+    class Meta:
+        verbose_name = "Wager Invitation"
+        verbose_name_plural = "Wager Invitations"
+
+    def __str__(self):
+        return f"{self.sender} invited {self.recipient} to {self.event}"

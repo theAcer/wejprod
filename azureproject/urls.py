@@ -54,6 +54,7 @@ urlpatterns = [
     path('', include('dashboard.urls')),
     path('api/', include('rest_framework.urls')),
     path('friends/', include('friendship.urls', namespace='friends')),
+    path('wagers/', include('wagers.urls', namespace='wagers')),
     path('swagger', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
