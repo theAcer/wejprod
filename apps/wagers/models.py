@@ -163,8 +163,6 @@ class WagerRequest(models.Model):
         self.rejected = timezone.now()
         self.save()
         wager_request_rejected.send(sender=self)
-        bust_cache("requests", self.to_user.pk)
-        bust_cache("sent_requests", self.from_user.pk)
         return True
 
     def __str__(self):
