@@ -165,8 +165,6 @@ class WagerRequest(models.Model):
         wager_request_rejected.send(sender=self)
         return True
 
-    def __str__(self):
-        return self.title
 
 
 class WagerInvitation(models.Model):
