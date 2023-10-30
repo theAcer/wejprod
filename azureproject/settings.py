@@ -59,6 +59,8 @@ INSTALLED_APPS = [
     'django_extensions',
     'silk',
     'rest_framework_swagger',
+    'channels',
+    'chat',
 
     #local
     'apps.users.apps.UsersConfig', 
@@ -69,6 +71,7 @@ INSTALLED_APPS = [
     'apps.party',
     'apps.friendship',
     'apps.wagers',
+
 
      #thirdparty
     'crispy_forms',
@@ -81,6 +84,12 @@ INSTALLED_APPS = [
     'debug_toolbar',
     'drf_yasg',
 ]
+
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels.layers.InMemoryChannelLayer',
+    },
+}
 
 SOCIALACCOUNT_PROVIDERS = {
     'google': {

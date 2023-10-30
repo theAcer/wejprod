@@ -4,6 +4,7 @@ from rest_framework import status
 from rest_framework.test import APIClient
 from django.contrib.auth import get_user_model
 from django.urls import reverse  # Import the reverse function
+from django.core.cache import cache
 
 
 class login:
@@ -59,8 +60,6 @@ class BaseTestCase(TestCase):
 
 
 class UserRegistrationAPITest(BaseTestCase):
-
-
     def test_user_registration(self):
         url = reverse('users:user-registration')  # Use the reverse function with the URL name
         response = self.client.post(url, self.user_data, format='json')
