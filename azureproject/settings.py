@@ -60,7 +60,7 @@ INSTALLED_APPS = [
     'silk',
     'rest_framework_swagger',
     'channels',
-    'chat',
+    
 
     #local
     'apps.users.apps.UsersConfig', 
@@ -71,6 +71,7 @@ INSTALLED_APPS = [
     'apps.party',
     'apps.friendship',
     'apps.wagers',
+    'apps.chat',
 
 
      #thirdparty
