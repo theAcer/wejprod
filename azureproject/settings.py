@@ -84,6 +84,7 @@ INSTALLED_APPS = [
     'bootstrap_datepicker_plus',
     'debug_toolbar',
     'drf_yasg',
+    'channels',
 ]
 
 CHANNEL_LAYERS = {
