@@ -1,10 +1,10 @@
 from django.contrib import admin
 from django.urls import path
-from app.views import chat_box
+from . import views
 
 app_name = 'chat'
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("chat/<str:chat_box_name>/", chat_box, name="chat"),
+    path('', views.user_list, name='chat'),
 ]

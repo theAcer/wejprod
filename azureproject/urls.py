@@ -47,6 +47,7 @@ urlpatterns = [
     
     # Local apps
     path('accounts/', include('users.urls')),
+    path('chat/', include('chat.urls')),
     path('party/', include('party.urls', namespace='party')),
     path('courses/', include('courses.urls', namespace='courses')),
     path('games/', include('games.urls', namespace='games')),
