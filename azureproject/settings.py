@@ -93,7 +93,6 @@ CHANNEL_LAYERS = {
         'CONFIG': {
             'hosts': [('127.0.0.1', 6379)],
         },
-        'ROUTING': 'example_channels.routing.channel_routing',
     }
 }
 
@@ -192,8 +191,8 @@ TEMPLATES = [
         },
     },
 ]
-
-WSGI_APPLICATION = 'azureproject.wsgi.application'
+ASGI_APPLICATION = 'azureproject.asgi.application'
+#WSGI_APPLICATION = 'azureproject.wsgi.application'
 
 
 # Database
