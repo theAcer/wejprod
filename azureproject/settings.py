@@ -45,6 +45,7 @@ else:
 # Application definition
 
 INSTALLED_APPS = [
+    'daphne',
     'rest_framework',
     'apps.firebase_auth',
     'restaurant_review.apps.RestaurantReviewConfig',
