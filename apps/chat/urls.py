@@ -1,9 +1,9 @@
-from django.contrib import admin
-from django.urls import path
+from django.urls import re_path, path
 from . import views
 
 app_name = 'chat'
 
 urlpatterns = [
-    path('', views.user_list, name='chat'),
+    re_path(r'^$', views.user_list, name='index'),
+    path("<str:room_name>/", views.room, name="room"),
 ]

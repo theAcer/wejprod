@@ -6,12 +6,25 @@
   <script>
     var socket = new WebSocket('ws://' + window.location.host + '/chat/');
 
-    socket.onopen = function open() {
-      console.log('WebSockets connection created.');
+    socket.onopen = function(event) {
+      console.log('WebSocket connection created.');
     };
 
-    if (socket.readyState == WebSocket.OPEN) {
-      socket.onopen();
-    }
+    socket.onmessage = function(event) {
+      console.log('WebSocket message received:', event.data);
+      // Handle incoming WebSocket messages here.
+    };
+
+    socket.onclose = function(event) {
+      if (event.wasClean) {
+        console.log('WebSocket connection closed cleanly.');
+      } else {
+        console.error('WebSocket connection unexpectedly closed.');
+      }
+    };
+
+    socket.onerror = function(error) {
+      console.error('WebSocket error:', error);
+    };
   </script>
 {% endblock script %}

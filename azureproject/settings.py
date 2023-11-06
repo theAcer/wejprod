@@ -46,6 +46,7 @@ else:
 
 INSTALLED_APPS = [
     'daphne',
+    'channels',
     'rest_framework',
     'apps.firebase_auth',
     'restaurant_review.apps.RestaurantReviewConfig',
@@ -85,15 +86,15 @@ INSTALLED_APPS = [
     'bootstrap_datepicker_plus',
     'debug_toolbar',
     'drf_yasg',
-    'channels',
 ]
 
 CHANNEL_LAYERS = {
     'default': {
-        'BACKEND': 'asgi_redis.RedisChannelLayer',
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
         'CONFIG': {
-            'hosts': [('127.0.0.1', 6379)],
+            'hosts': [('localhost', 6379)],
         },
+        #'ROUTING': 'azureproject.routing.channel_routing',
     }
 }
 
