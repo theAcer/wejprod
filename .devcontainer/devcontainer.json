@@ -55,7 +55,7 @@
 	"forwardPorts": [
 		8000, 5432, 6379
 	],
-	"postCreateCommand": "apt-get update && apt-get install -y docker.io && apt install redis-server",
+	"postCreateCommand": "apt-get update && apt-get install -y docker.io && apt install redis-server --port 6379",
 
 	// Use 'postCreateCommand' to run commands after the container is created.
 	// "postCreateCommand": "",

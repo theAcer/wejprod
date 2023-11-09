@@ -2,8 +2,8 @@ from django.shortcuts import render
 
 app_name = 'chat'
 
-def user_list(request):
+def index(request):
     return render(request, 'chat/index.html')
 
-def course_chat_room(request, room_name):
+def room(request, room_name):
     return render(request, "chat/room.html", {"room_name": room_name})
