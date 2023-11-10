@@ -174,7 +174,14 @@ CORS_ALLOW_CREDENTIALS = True  # You may need this depending on your setup
 CORS_ORIGIN_WHITELIST = (
     'https://localhost:8000',
 )
-CORS_ORIGIN_ALLOW_ALL = True 
+CORS_ORIGIN_ALLOW_ALL = True
+
+from datetime import timedelta
+
+SIMPLE_JWT ={
+    "ACCES_TOKEN_LIFETIME": timedelta(minutes=5),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=1)
+}
 
 ROOT_URLCONF = 'azureproject.urls'
 
