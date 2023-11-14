@@ -61,6 +61,7 @@ INSTALLED_APPS = [
     'django_extensions',
     'silk',
     'rest_framework_swagger',
+    'rest_framework_simplejwt',
     
     
 
@@ -154,6 +155,7 @@ MIDDLEWARE = [
     'debug_toolbar.middleware.DebugToolbarMiddleware',
     'silk.middleware.SilkyMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
+    
 ]
 
 REST_FRAMEWORK = {
@@ -166,6 +168,7 @@ REST_FRAMEWORK = {
     ],
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.SessionAuthentication',
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
     ],
 
 }
